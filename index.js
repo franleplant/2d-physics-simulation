@@ -123,6 +123,7 @@ class Player {
   }
 
   set vy(vy) {
+    // TODO: fix jump conditinal
     if (vy === 0 && this._vy > 0) {
       this.isJumping = false
       this.jumpCounter = 0
@@ -221,13 +222,13 @@ function render() {
   if (areColliding(platform, player)) {
     if (player.vx > 0) {
       if (player.xPrev + player.w <= platform.x && player.x + player.w > platform.x) {
-        console.log("right collition") 
+        //console.log("right collition") 
         player.vx = 0
         player.x = platform.x - player.w
       }
     } else if (player.vx < 0) {
       if (player.xPrev >= platform.x + platform.w && player.x < platform.x + platform.w) {
-        console.log("left collition")
+        //console.log("left collition")
         player.vx = 0
         player.x = platform.x + platform.w
       }
@@ -235,14 +236,14 @@ function render() {
 
     if (player.vy > 0) {
       if (player.yPrev + player.h <= platform.y && player.y + player.h > platform.y) {
-        console.log("bottom collition")
+        //console.log("bottom collition")
         player.a = 0
         player.vy = 0
         player.y = platform.y - player.h
       }
     } else if (player.vy < 0) {
       if (player.yPrev >= platform.y + platform.h && player.y < platform.y + platform.h) {
-        console.log("top collition")
+        //console.log("top collition")
         player.a = 0
         player.vy = 0
         player.y = platform.y + platform.h
